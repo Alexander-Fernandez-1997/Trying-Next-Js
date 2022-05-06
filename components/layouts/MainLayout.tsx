@@ -1,26 +1,22 @@
-import Head from 'next/head';
-import { Navbar } from '../Navbar';
+import Head from "next/head";
+import { FC } from "react";
+import { Navbar } from "../Navbar";
+import { Props } from "./DarkLayout";
 
+import styles from "./MainLayout.module.css";
 
-import styles from './MainLayout.module.css';
+export const MainLayout: FC<Props> = ({ children }) => {
+  return (
+    <div className={styles.container}>
+      <Head>
+        <title>Home - Fernando</title>
+        <meta name="description" content="Home Page" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-export const MainLayout = ({ children }) => {
-    return (
-        <div className={styles.container}>
-          
-          <Head>
-            <title>Home - Fernando</title>
-            <meta name="description" content="Home Page" />
-            <link rel="icon" href="/favicon.ico" />
-          </Head>
-        
-          <Navbar />
-    
-          <main className={styles.main}>
-    
-            { children }
-    
-          </main>     
-        </div>
-      )
+      <Navbar />
+
+      <main className={styles.main}>{children}</main>
+    </div>
+  );
 };
